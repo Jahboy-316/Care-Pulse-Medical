@@ -59,12 +59,12 @@ export function createSimulatedMediaStream(label = 'Doctor Feed') {
     ctx.stroke();
 
     // Stream status labels
-    ctx.font = 'bold 18px "Space Grotesk", sans-serif';
+    ctx.font = 'bold 18px "Poppins", sans-serif';
     ctx.fillStyle = '#FFFFFF';
     ctx.textAlign = 'center';
     ctx.fillText(`${label} • ENCRYPTED WEBRTC FEED`, 320, 320);
 
-    ctx.font = '13px "Space Grotesk", sans-serif';
+    ctx.font = '13px "Poppins", sans-serif';
     ctx.fillStyle = '#A7F3D0';
     ctx.fillText(`CAREPULSE HD LIVE • ${(30 + Math.sin(frame * 0.1) * 0.2).toFixed(1)} FPS`, 320, 345);
 
