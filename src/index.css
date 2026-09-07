@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* CarePulse Brand Palette */
+  --color-carepulse-teal: #0F4C5C;        /* Header bar, active navigation, primary highlights */
+  --color-carepulse-eucalyptus: #2A9D8F;  /* Live video badge, success indicators, completed steps */
+  --color-carepulse-amber: #E9C46A;       /* Pending appointments, warning banners */
+  --color-carepulse-coral: #F4A261;       /* End call button, high-priority actions */
+  --color-carepulse-bg: #F8FAFC;          /* Main clinical workspace background */
+  --color-carepulse-card: #FFFFFF;        /* EHR cards, dynamic modals */
+  --color-carepulse-text: #1E293B;        /* Primary high-contrast text */
+  --color-carepulse-muted: #64748B;       /* Subtext, timestamps, labels */
+}
+
+@layer base {
+  * {
+    font-family: var(--font-sans);
+  }
+  
+  body {
+    background-color: var(--color-carepulse-bg);
+    color: var(--color-carepulse-text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* Custom scrollbar for clinical charts and queue lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Pulse animation for live telehealth indicators */
+@keyframes clinical-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.08);
+  }
+}
+
+.animate-clinical-pulse {
+  animation: clinical-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
