@@ -6,11 +6,11 @@ import AuditLogTable from './AuditLogTable';
 import PracticeAnalytics from './PracticeAnalytics';
 
 export default function AdminConsole() {
-  const { auditLogs, patients, appointments, prescriptions } = useCarePulse();
+  const { auditLogs, patients, appointments } = useCarePulse();
   const [activeTab, setActiveTab] = useState('analytics'); // 'analytics' | 'audit'
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
+    <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8">
 
       {/* Admin Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -19,31 +19,27 @@ export default function AdminConsole() {
             <ShieldCheck className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Admin & Compliance Console</h1>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Chief Compliance Officer — HIPAA Audit Infrastructure & Practice Analytics
-            </p>
+            <h1 className="text-2xl font-bold text-slate-900">Practice overview</h1>
+            <p className="mt-1 text-sm text-slate-500">Secure operations and compliance</p>
           </div>
         </div>
 
         {/* Status Pill */}
         <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
           <Lock className="w-3.5 h-3.5 text-emerald-600" />
-          <span>256-AES HIPAA Compliant Local Storage — IndexedDB Active</span>
+          <span>Secure storage active</span>
         </div>
       </div>
 
       {/* Quick Stats Strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-5">
         {[
-          { label: 'Audit Log Entries', value: auditLogs.length, color: 'text-[#0F4C5C]' },
-          { label: 'Registered Patients', value: patients.length, color: 'text-[#2A9D8F]' },
-          { label: 'Total Appointments', value: appointments.length, color: 'text-amber-600' },
-          { label: 'Active Rx Orders', value: prescriptions.filter(p => p.status === 'Active').length, color: 'text-[#F4A261]' }
+          { label: 'Patient records', value: patients.length, color: 'text-[#0F4C5C]' },
+          { label: 'Upcoming appointments', value: appointments.filter(p => p.status !== 'Completed').length, color: 'text-[#2A9D8F]' }
         ].map((stat, i) => (
           <div key={i} className="bg-white rounded-xl border border-slate-200 p-3.5 shadow-xs">
-            <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-            <div className="text-[11px] font-semibold text-slate-600 mt-0.5">{stat.label}</div>
+            <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
+            <div className="mt-1 text-sm font-semibold text-slate-600">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -59,7 +55,7 @@ export default function AdminConsole() {
           }`}
         >
           <BarChart2 className="w-4 h-4" />
-          Practice Analytics Dashboard
+          Overview
         </button>
 
         <button
@@ -71,7 +67,7 @@ export default function AdminConsole() {
           }`}
         >
           <ShieldCheck className="w-4 h-4" />
-          HIPAA Audit Log
+          Audit activity
           {auditLogs.length > 0 && (
             <span className="text-[10px] bg-[#0F4C5C] text-white rounded-full px-1.5 py-0.5 font-bold">
               {auditLogs.length}

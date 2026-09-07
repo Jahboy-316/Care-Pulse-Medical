@@ -53,7 +53,7 @@ export default function ProviderWorkspace() {
   }
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
+    <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8">
 
       {/* Workspace Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -63,10 +63,8 @@ export default function ProviderWorkspace() {
               <Stethoscope className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">Provider EHR Workspace</h1>
-              <p className="text-xs text-slate-500">
-                Dr. Evelyn Vance, MD — Internal Medicine & Telehealth Lead
-              </p>
+              <h1 className="text-2xl font-bold text-slate-900">Today’s care</h1>
+              <p className="mt-1 text-sm text-slate-500">Dr. Evelyn Vance, MD</p>
             </div>
           </div>
         </div>
@@ -82,7 +80,7 @@ export default function ProviderWorkspace() {
             }`}
           >
             <Video className="w-3.5 h-3.5" />
-            Live Queue & Telehealth
+            Patient queue
           </button>
           <button
             onClick={() => setView('split-chart')}
@@ -93,7 +91,7 @@ export default function ProviderWorkspace() {
             }`}
           >
             <SplitSquareHorizontal className="w-3.5 h-3.5" />
-            Split-Screen Charting
+            Patient chart
           </button>
         </div>
       </div>
@@ -121,7 +119,7 @@ export default function ProviderWorkspace() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
-            className="grid grid-cols-1 xl:grid-cols-2 gap-5"
+            className="grid grid-cols-1 xl:grid-cols-2 gap-8"
             style={{ minHeight: '80vh' }}
           >
             {/* Left Panel: Comprehensive Patient File & Vitals */}
